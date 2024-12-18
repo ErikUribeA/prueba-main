@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from '../../components/navbar';
 
-
 export default function DashboardLayout({
     children,
 }: {
@@ -21,13 +20,18 @@ export default function DashboardLayout({
 
     return (
         <div className="relative min-h-screen">
-            <main className="relative z-10">
+            <div 
+                style={{ backgroundImage: `url('/media/bg.jpg')` }}
+                className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+            />
+            <div className="relative z-10 min-h-screen flex flex-col">
                 <Navbar />
-                <div>
-                    {children}
-                </div>
-            </main>
+                <main className="flex-grow overflow-auto">
+                    <div className="container mx-auto px-4 py-8">
+                        {children}
+                    </div>
+                </main>
+            </div>
         </div>
-
     );
 }

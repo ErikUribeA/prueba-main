@@ -27,19 +27,19 @@ export function RegisterForm() {
     };
 
     return (
-        <div className="font-[sans-serif] relative">
+        <div className="font-[sans-serif] relative bg-black">
             <div className="flex flex-col items-center justify-center min-h-screen px-4 py-6">
                 <div className="grid  w-full max-w-6xl gap-4 md:grid-cols-2 ">
                     <div className="border border-yellow-300 rounded-lg p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-md:mx-auto ">
                         <form className="space-y-4 login-form " onSubmit={handleSubmit} >
                             <div className="mb-8">
-                                <h3 className="text-3xl font-extrabold text-gray-800">Register user</h3>
-                                <p className="mt-4 text-sm leading-relaxed text-gray-500">
+                                <h3 className="text-3xl font-extrabold text-gray-200">Register user</h3>
+                                <p className="mt-4 text-sm leading-relaxed text-gray-300">
                                     Register your user here to get access to this awesome page.
                                 </p>
                             </div>
                             <div>
-                                <label htmlFor="username" className="block mb-2 text-sm text-gray-800">User name</label>
+                                <label htmlFor="username" className="block mb-2 text-sm text-gray-300">User name</label>
                                 <div className="relative flex items-center">
                                     <input
                                         name="username"
@@ -58,7 +58,7 @@ export function RegisterForm() {
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor="password" className="block mb-2 text-sm text-gray-800">Password</label>
+                                <label htmlFor="password" className="block mb-2 text-sm text-gray-300">Password</label>
                                 <div className="relative flex items-center">
                                     <input
                                         name="password"
@@ -83,11 +83,11 @@ export function RegisterForm() {
                                 </div>
                             </div>
                             <div className="!mt-8">
-                                <button type="submit" className="w-full px-4 py-3 text-sm tracking-wide text-white bg-yellow-200 rounded-lg shadow-xl hover:bg-yellow-300 focus:outline-none">
+                                <button type="submit" className="w-full px-4 py-3 text-sm tracking-wide text-white bg-yellow-300 rounded-lg shadow-xl hover:bg-yellow-400 focus:outline-none">
                                     Register
                                 </button>
                             </div>
-                            <p className="text-sm !mt-8 text-center text-gray-800">
+                            <p className="text-sm !mt-8 text-center text-gray-300">
                                 already do you have a account? <a href="#" onClick={(e) => { e.preventDefault(); window.location.href = '/login' }} className="ml-1 font-semibold text-yellow-300 hover:underline whitespace-nowrap">Login here</a>
                             </p>
                         </form>

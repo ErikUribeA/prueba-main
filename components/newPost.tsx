@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Post, Platform, Status, Corrections } from '../models/user.models';
+import InputAlert from './alerts/successAlert';
 
 const NewPost: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -52,10 +53,12 @@ const NewPost: React.FC = () => {
                     'x-user-email': 'prueba222@gmail.com' // Encabezado esperado por la API
                 }
             });
+            InputAlert('Post Created Successfully', 'success')
             console.log('Post created:', response.data);
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 // AxiosError específico
+                InputAlert('Error creating post', 'error')
                 console.error('Error creating post:', error.response?.data || error.message);
             } else {
                 // Otros tipos de errores
@@ -66,10 +69,8 @@ const NewPost: React.FC = () => {
 
     return (
         <div
-            className="min-h-screen flex justify-center bg-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
-        >
-            <div className="absolute bg-black opacity-60 inset-0 -z-10"></div>
-            <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg -z-5">
+            className="pt-16 min-h-screen  bg-no-repeat bg-cover bg-center flex justify-center items-center px-4 py-12">
+            <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-10 ">
                 <form onSubmit={handleSubmit}>
                     <div className="grid gap-8 grid-cols-1">
                         <div className="flex flex-col">
@@ -146,7 +147,10 @@ const NewPost: React.FC = () => {
                                         <input
                                             placeholder="76"
                                             value={approvalPercentage}
-                                            onChange={(e) => setApprovalPercentage(parseFloat(e.target.value) || 0)}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                setApprovalPercentage(value === '' ? NaN : parseFloat(value));
+                                            }}
                                             className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                                             type="number"
                                             name="approvalPercentage"
